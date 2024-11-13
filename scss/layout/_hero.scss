@@ -1,0 +1,152 @@
+.hero {
+  // Image by David Mark from Pixabay
+  // https://pixabay.com/photos/hong-kong-city-urban-skyscrapers-1990268/
+  background-image: linear-gradient(
+      to right,
+      $color-primary-dark-overlay,
+      $color-primary-dark-overlay
+    ),
+    url(../img/hong-kong-1990268_1920.jpg);
+  background-size: cover;
+  padding: 10rem 5rem;
+
+  @include bottom-slant-clip-path(80);
+
+  z-index: 2;
+  position: relative;
+
+  color: $color-white;
+
+  &__container {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  &__row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    animation: moveInHero 1s ease-out;
+  }
+
+  &__tagline {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    li {
+      width: 16rem;
+      text-align: center;
+    }
+  }
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+  }
+
+  &__link {
+    font-size: 4rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-right: 3rem;
+    }
+
+    a {
+      color: $color-white;
+    }
+
+    &--label {
+      font-size: 1.6rem;
+      visibility: hidden;
+    }
+
+    &:hover .hero__link--label {
+      visibility: visible;
+    }
+  }
+
+  &__cue {
+    color: $color-white;
+    text-decoration: none;
+    position: absolute;
+    bottom: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-size: 4rem;
+    display: none;
+
+    &:hover,
+    &:focus,
+    &:visited,
+    &:link,
+    &:active {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hero-cue-fade-in {
+      color: blue;
+      animation: fadeInHeroCue 0.4s;
+    }
+
+    .hero-cue-fade-out {
+      animation: fadeOutHeroCue 0.4s;
+    }
+  }
+
+  @media only screen and (max-width: 65em) {
+    background-image: linear-gradient(
+        to right,
+        $color-primary-dark-overlay,
+        $color-primary-dark-overlay
+      ),
+      url(../img/hong-kong-1990268_1280.jpg);
+  }
+
+  @media only screen and (hover: none) {
+    &__link:hover .hero__link--label {
+      visibility: hidden;
+    }
+  }
+
+  @media only screen and (max-width: 39.75em) {
+    &__tagline {
+      display: none;
+    }
+  }
+
+  // Soften clip-path angle on smaller screens
+  @media only screen and (max-width: 36.875em) {
+    @include bottom-slant-clip-path(87);
+  }
+
+  // Soften clip-path angle on smaller screens
+  @media only screen and (max-width: 23.45em) {
+    @include bottom-slant-clip-path(92);
+  }
+
+  // Mobile landscape
+  @media screen and (min-device-aspect-ratio: 1/1) and (orientation: landscape) and (hover: none) and (max-height: 40em) {
+    &__tagline {
+      display: none;
+    }
+  }
+}

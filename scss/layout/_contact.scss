@@ -1,0 +1,83 @@
+#contact {
+  background-color: $dark-motion;
+  // margin-top: -30rem;
+  padding: 15rem 1rem 15rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: $color-white;
+
+  // -webkit-clip-path: polygon(0 25%, 100% 0, 100% 100%, 0 100%);
+  // clip-path: polygon(0 25%, 100% 0, 100% 100%, 0 100%);
+
+  // @media only screen and (max-width: 34.375em) {
+  //   -webkit-clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+  //   clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+  // }
+
+  .row {
+    margin-top: 10rem;
+  }
+
+  h2 {
+    font-size: 5rem;
+    margin-bottom: 3rem;
+  }
+
+  p {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  p,
+  .btn {
+    font-size: 2.4rem;
+  }
+
+  #email-me {
+    color: white;
+    text-decoration: underline;
+  }
+
+  ul,
+  li {
+    padding: 0;
+    vertical-align: baseline;
+  }
+
+  ul {
+    list-style-type: none;
+
+    li:not(:last-child) {
+      margin-right: 2rem;
+    }
+
+    li {
+      display: inline-block;
+
+      i {
+        color: white;
+        font-size: 4.8rem;
+
+        transition: transform 0.2s;
+
+        &:hover {
+          // backface-visibility and translateZ attempt to fix blurriness during transition.
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          transform: scale(1.1) translateZ(0);
+
+          text-decoration: none;
+        }
+
+        @media only screen and (hover: none) {
+          &:hover {
+            transform: scale(1);
+          }
+        }
+      }
+    }
+  }
+}

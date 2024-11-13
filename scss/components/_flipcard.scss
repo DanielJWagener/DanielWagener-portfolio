@@ -1,0 +1,192 @@
+.flipcard {
+  // Functionality
+  perspective: 200rem;
+  -moz-perspective: 200rem;
+  position: relative;
+  width: 45%;
+  height: $card-height;
+  margin-bottom: 5rem;
+
+  &__side {
+    height: $card-height;
+    transition: all 0.8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    overflow: hidden;
+    padding: 2rem;
+    box-shadow: 0 1.5rem 4rem rgba($color-text-primary, 0.25);
+
+    &--front {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &--back {
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+
+      &--1,
+      &--4 {
+        background-color: $color-primary-light;
+      }
+
+      &--2,
+      &--3 {
+        background-color: $color-secondary-light;
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    transform: rotateY(-180deg);
+  }
+
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+
+  &__links-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+
+    i {
+      margin-right: 1rem;
+      font-size: 3.5rem;
+    }
+  }
+
+  &__link:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  .project-image {
+    background-size: cover;
+    background-position: center;
+
+    &--1 {
+      @include flipcard-overlay-primary("../../img/geckrello.png");
+    }
+
+    &--2 {
+      @include flipcard-overlay-secondary("../../img/calculator.png");
+    }
+
+    &--3 {
+      @include flipcard-overlay-secondary("../../img/mapbox.png");
+    }
+
+    &--4 {
+      @include flipcard-overlay-primary("../../img/blender.png");
+    }
+  }
+
+  @media only screen and (hover: none), (pointer: coarse) {
+    height: 60rem;
+    border-radius: 1rem;
+    box-shadow: 0 1.5rem 4rem rgba($color-text-primary, 0.25);
+
+    &__side {
+      height: auto;
+      position: relative;
+      box-shadow: none;
+      border-radius: 0;
+
+      &--front {
+        height: 40%;
+        border-radius: 10px 10px 0 0;
+      }
+
+      &--back {
+        height: 60%;
+        transform: rotateY(0);
+        border-radius: 0 0 1rem 1rem;
+      }
+    }
+
+    &:hover &__side--front {
+      transform: rotateY(0);
+    }
+  }
+
+  @media only screen and (max-width: 62.5em) {
+    .project-image {
+      background-size: cover;
+      background-position: center;
+
+      &--1 {
+        @include flipcard-overlay-primary("../../img/geckrello.med.png");
+      }
+
+      &--2 {
+        @include flipcard-overlay-secondary("../../img/calculator.med.png");
+      }
+
+      &--3 {
+        @include flipcard-overlay-secondary("../../img/mapbox.med.png");
+      }
+
+      &--4 {
+        @include flipcard-overlay-primary("../../img/blender.med.png");
+      }
+    }
+  }
+
+  @media only screen and (max-width: 40em) {
+    width: 80%;
+
+    &--1 {
+      order: 1;
+    }
+
+    &--2 {
+      order: 2;
+    }
+
+    &--3 {
+      order: 4;
+    }
+
+    &--4 {
+      order: 3;
+    }
+  }
+
+  @media only screen and (max-width: 23.75em) {
+    width: 90%;
+
+    .project-image {
+      background-size: cover;
+      background-position: center;
+
+      &--1 {
+        @include flipcard-overlay-primary("../../img/geckrello.small.png");
+      }
+
+      &--2 {
+        @include flipcard-overlay-secondary("../../img/calculator.small.png");
+      }
+
+      &--3 {
+        @include flipcard-overlay-secondary("../../img/mapbox.small.png");
+      }
+
+      &--4 {
+        @include flipcard-overlay-primary("../../img/blender.small.png");
+      }
+    }
+  }
+}

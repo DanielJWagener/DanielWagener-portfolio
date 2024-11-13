@@ -1,0 +1,38 @@
+@mixin flipcard-overlay-primary($image) {
+  background-image: linear-gradient(
+      to right bottom,
+      $color-primary-dark-overlay,
+      $color-primary-light-overlay
+    ),
+    url($image);
+}
+
+@mixin flipcard-overlay-secondary($image) {
+  background-image: linear-gradient(
+      to right bottom,
+      $color-secondary-dark-overlay,
+      $color-secondary-light-overlay
+    ),
+    url($image);
+}
+
+@mixin bottom-slant-clip-path($bottom-right-percent) {
+  // Sass math is wack
+
+  // Set height using custom vh property and a fallback:
+  height: calc(1vh * 100 / (#{$bottom-right-percent} / 100));
+  height: calc(var(--vh, 1vh) * 100 / (#{$bottom-right-percent} / 100));
+
+  -webkit-clip-path: polygon(
+    0 0,
+    100% 0,
+    100% percentage($bottom-right-percent / 100),
+    0% 100%
+  );
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% percentage($bottom-right-percent / 100),
+    0% 100%
+  );
+}
